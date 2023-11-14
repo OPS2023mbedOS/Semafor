@@ -6,21 +6,15 @@ void car(uint32_t color, int parking_time, int outside_time){
 
         mutex_lots.lock();
 
-        int i =0;
-        for(; i < PARKING_LOTS; i++){
-            if(park[i] == NULL){
-                park[i] = color;
-                break;
-            }
-        }
+        int i = freeSpace.top();
+        freeSpace.pop();
         mutex_lots.unlock();
         
         drawOnDisplay(i, color);
         ThisThread::sleep_for(std::chrono::milliseconds(parking_time));
 
         mutex_lots.lock();
-        park[i] = NULL;
-
+        freeSpace.push(i);
         mutex_lots.unlock();
         drawOnDisplay(i, LCD_COLOR_BLACK);
 

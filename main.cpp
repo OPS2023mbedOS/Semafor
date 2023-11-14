@@ -20,6 +20,11 @@ int main()
     BSP_LCD_LayerDefaultInit(LTDC_ACTIVE_LAYER, LCD_FB_START_ADDRESS);
     BSP_LCD_SelectLayer(LTDC_ACTIVE_LAYER);
     BSP_LCD_Clear(LCD_COLOR_BLACK);
+    
+    for (int i = 0; i<4;i++){
+        freeSpace.push(i)
+    }
+
 
     car1.start([=]() {car(LCD_COLOR_BLUE, 2000, 4000); });
 
