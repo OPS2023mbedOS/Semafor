@@ -10,6 +10,7 @@ Thread car6;
 Mutex mutex_lots;
 Mutex mutex_display;
 Semaphore parking_lots(4);
+stack<int> freeSpace;
 
 
 uint32_t park[4]; //funguje ale neuspokojí -> předělat na zásobník
@@ -22,7 +23,7 @@ int main()
     BSP_LCD_Clear(LCD_COLOR_BLACK);
     
     for (int i = 0; i<4;i++){
-        freeSpace.push(i)
+        freeSpace.push(i);
     }
 
 
